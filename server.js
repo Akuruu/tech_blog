@@ -15,7 +15,7 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
    // For password sessions
 const sess = {
-    secret: "Super secret secret",
+    secret: "cookie secret",
     cookie: {},
     resave: false,
     saveUninitialized: true,

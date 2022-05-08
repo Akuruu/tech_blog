@@ -10,4 +10,8 @@ const router = require("express").Router();
 router.use("/user", userRoutes);
 // write the rest of the router.use routes
 
+// router.use("/post", postRoutes);
+
+// router.use("/comment", CommentRoutes);
+
 module.exports = router;
