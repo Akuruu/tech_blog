@@ -1,7 +1,4 @@
-// You need the following required:
-// path
 const path = require('path');
-// express
 const express = require('express');
 const session = require('expression-session');
 // express-handlebars
@@ -16,8 +13,15 @@ const PORT = process.env.PORT || 3001;
 const sequelize = require("./config/config");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
+   // For password sessions
 const sess = {
-    // For password sessions
+    secret: "Super secret secret",
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+      db: sequelize
+    })
 };
 
 app.use(session(sess));
