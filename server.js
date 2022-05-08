@@ -1,8 +1,14 @@
 // You need the following required:
 // path
+const path = require('path');
 // express
+const express = require('express');
+const session = require('expression-session');
 // express-handlebars
+// const exphbs = require('express-handlebars)
+
 // helpers (if you are putting timestamps on posts)
+// const helpers = require('./utils/helpers');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
