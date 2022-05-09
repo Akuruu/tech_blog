@@ -1,11 +1,11 @@
 const path = require('path');
 const express = require('express');
-const session = require('expression-session');
+const session = require('express-session');
 // express-handlebars
-// const exphbs = require('express-handlebars)
+const exphbs = require('express-handlebars');
 
 // helpers (if you are putting timestamps on posts)
-// const helpers = require('./utils/helpers');
+const helpers = require('./utils/helper');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -13,7 +13,6 @@ const PORT = process.env.PORT || 3001;
 const sequelize = require("./config/config");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
-   // For password sessions
 const sess = {
     secret: "cookie secret",
     cookie: {},
