@@ -6,14 +6,14 @@ const withAuth = require("../../utils/auth");
 router.post("/", withAuth, async (req, res) => {
     try {
         const newComment = await Comment.create({
-          ...req.body,
-          user_id: req.session.user_name,
+            ...req.body,
+            user_id: req.session.user_name,
         });
-    
+
         res.status(200).json(newComment);
-      } catch (err) {
+    } catch (err) {
         res.status(400).json(err);
-      }
-    });
+    }
+});
 
 module.exports = router;
