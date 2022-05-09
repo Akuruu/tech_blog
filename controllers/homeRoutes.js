@@ -1,8 +1,14 @@
 const router = require("express").Router();
 const { Post, Comment, User } = require("../models");
 
-router.get("/", async (req, res) => {
     // get all posts for the homepage
+router.get("/", async (req, res) => {
+    try {
+        const postData = await Post.findAll();
+        res.status(200).json(postData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 router.get("/post/:id", async (req, res) => {
