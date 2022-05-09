@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { Post } = require("../../models");
 const withAuth = require("../../utils/auth");
 
+// Creates a post
 router.post("/", withAuth, async (req, res) => {
     try {
         const postdata = await Post.create(req.body);
@@ -11,12 +12,39 @@ router.post("/", withAuth, async (req, res) => {
     }
 });
 
+// Updates a post
 router.put("/:id", withAuth, async (req, res) => {
-    // Update a post
+    Post.update(req.body, {
+        where: {
+            id: req.params.id,
+        },
+    }
+    )
+        .then((updatedPost) => {
+            res.json(updatedPost);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.json(err);
+        });
 });
 
+// Deletes a post
 router.delete("/:id", withAuth, async (req, res) => {
-    // Delete the post
+    try {
+        const postData = await Post.destroy({
+            where: {
+                id: req.params.id
+            }
+        });
+        if (!postData) {
+            res.status(404).json({ message: "This post doesn't exist."});
+            return;
+        }
+        res.status(200).json(postData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 module.exports = router;
