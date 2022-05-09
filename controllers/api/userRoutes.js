@@ -20,20 +20,20 @@ router.post("/", async (req, res) => {
 // User login
 router.post("/login", async (req, res) => {
     try {
-        const userData = await User.findOne({ where: { email: req.body.email } });
+        const userData = await User.findOne({ where: { user: req.body.username } });
 
         if (!userData) {
             res
-                .status(400)
-                .json({ message: 'Incorrect user, please try again' });
+            .status(400)
+            .json({ message: 'Incorrect user, please try again' });
             return;
         }
-        const validPassword = await userData.checkPassword(req.body.password);
+        const correctPassword = await userData.checkPassword(req.body.password);
 
-        if (!validPassword) {
+        if (!correctPassword) {
             res
-                .status(400)
-                .json({ message: 'Incorrect password, please try again' });
+            .status(400)
+            .json({ message: 'Incorrect password, please try again' });
             return;
         }
 
@@ -50,7 +50,13 @@ router.post("/login", async (req, res) => {
 
 // User logout
 router.post("/logout", async (req, res) => {
-
+    if (req.session.logged_in) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(404).end();
+    }
 });
 
 module.exports = router;
