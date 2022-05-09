@@ -28,8 +28,22 @@ res.render('postData', {
   });
 })
 
+// To be able to find posts by primary key and render the edit post on the dashboard
 router.get("/edit/:id", withAuth, async (res, req) => {
-    // To be able to find posts by primary key and render the edit post on the dashboard
-})
+    try {
+        const postData = await Post.findByPk(req.params.id);
+
+        if (postData) {
+            const post = postData.get({ plain: true });
+            res.render('edit-post', {
+                layout: 'dashboard',
+                post,
+            });
+        }
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 
 module.exports = router;

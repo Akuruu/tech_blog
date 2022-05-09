@@ -8,7 +8,7 @@ const dashboardRoutes = require('./dashboardRoutes');
 router.use('/api', apiRoutes);
 
 router.use("/", homeRoutes);
-res.send()
+// res.send();
 // finish the other needed routes with router.use()
 
 
