@@ -14,7 +14,11 @@ Comment.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
-    text: {
+    description: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+    },
+    user_name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
