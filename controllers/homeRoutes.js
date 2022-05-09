@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Post, Comment, User } = require("../models");
 
-    // get all posts for the homepage
+// get all posts for the homepage
 router.get("/", async (req, res) => {
     try {
         const postData = await Post.findAll();
@@ -11,32 +11,33 @@ router.get("/", async (req, res) => {
     }
 });
 
+// get a single post
 router.get("/post/:id", async (req, res) => {
-    // get a single post
     try {
         const postData = await Post.findByPk(req.params.id, {
-          include: { model: Post,
-          attributes: ['id', 'title', 'descirption', 'user_name', 'date_created']}
+            include: {
+                model: Post,
+                attributes: ['id', 'title', 'descirption', 'user_name', 'date_created']
+            }
         });
-    
         if (!postData) {
-          res.status(404).json({ message: "This post doesn't exist." });
-          return;
+            res.status(404).json({ message: "This post doesn't exist." });
+            return;
         }
-    
         res.status(200).json(postData);
-      } catch (err) {
+    } catch (err) {
         res.status(500).json(err);
-      }
-    });
+    }
 });
 
+// login
 router.get("/login", (req, res) => {
-    // login
+
 });
 
+// signup
 router.get("/signup", (req, res) => {
-    // signup
+
 })
 
 module.exports = router;
