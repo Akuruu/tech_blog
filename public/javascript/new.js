@@ -1,18 +1,23 @@
-const newFormHandler = async function(event) {
-    event.preventDefault();
-  
-    const title = document.querySelector('input[name="post-title"]').value;
-    const body = document.querySelector('textarea[name="post-body"]').value;
-  
-    await fetch(`/api/post`, {
-         // Create the functionality to help create the buttons for your website.
+const newFormHandler = async function (event) {
+  event.preventDefault();
 
-    });
-  
+  const title = document.querySelector('input[name="post-title"]').value;
+  const body = document.querySelector('textarea[name="post-body"]').value;
+
+  const response = await fetch(`/api/post`, {
+    method: 'POST',
+    body: JSON.stringify({ title, body }),
+    headers: { "Content-Type": "application/json" }
+
+  });
+
+  if (response.ok) {
     document.location.replace('/dashboard');
-  };
-  
-  document
-    .querySelector('#new-post-form')
-    .addEventListener('submit', newFormHandler);
-  
+  } else {
+    alert('Sorry, could not create post');
+  }
+};
+
+document
+  .querySelector('#new-post-form')
+  .addEventListener('submit', newFormHandler);
