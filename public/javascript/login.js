@@ -4,8 +4,11 @@ const loginFormHandler = async function(event) {
     const usernameEl = document.querySelector('#username-input-login');
     const passwordEl = document.querySelector('#password-input-login');
   
+    if (usernameEl && passwordEl) {
     const response = await fetch('/api/user/login', {
-          // Create the functionality to help create the buttons for your website.
+      method: 'POST',
+        body: JSON.stringify({ usernameEl, passwordEl }),
+        headers: { 'Content-Type': 'application/json' },
 
     });
   
@@ -14,7 +17,8 @@ const loginFormHandler = async function(event) {
     } else {
       alert('Failed to login');
     }
-  };
+  }
+};
   
   document
     .querySelector('#login-form')
