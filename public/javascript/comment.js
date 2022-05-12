@@ -15,7 +15,7 @@ const commentFormHandler = async function(event) {
       if (response.ok) {
         document.location.replace(`/posts/${postId}`);
       } else {
-        alert("Did not add new blog");
+        alert("Sorry, could not comment");
       }
     };
   
