@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Post } = require("../models");
 const withAuth = require("../utils/auth");
 
-// shows all posts
+// Shows all posts
 router.get("/", withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
@@ -21,7 +21,7 @@ router.get("/", withAuth, async (req, res) => {
     }
 });
 
-// for showing new posts to the user
+// Showing new posts to the user
 router.get("/new", withAuth, (req, res) => {
 res.render('postData', {
     layout: 'dashboard',
