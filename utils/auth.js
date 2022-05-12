@@ -1,8 +1,10 @@
-// Write some authentication for the login
 const withAuth = (req, res, next) => {
-// conditionals for login
-// if () you are not logged in
-// then redirect to login page
-// else continue to dashboard
-};
+    // If the user is not logged in, redirect the request to the login route
+    if (!req.session.logged_in) {
+        res.redirect('/login');
+      } else {
+        next('/dashboard');
+      }
+    };
+
 module.exports = withAuth;
