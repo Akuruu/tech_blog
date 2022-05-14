@@ -1,0 +1,10 @@
+<div class="row card">
+    {{#each posts}}
+    <div class="card-header col-md-12">
+
+        <h2><a href="/dashboard/edit/{{post.id}}">{{post.title}}</a></h2>
+        {{format_date post.date_created}}
+
+    </div>
+    {{/each}}
+</div>

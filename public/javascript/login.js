@@ -15,12 +15,12 @@ const loginFormHandler = async function(event) {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      alert('Failed to login');
+      alert('Could not login');
     }
   }
 };
   
   document
-    .querySelector('#login-form')
+    .querySelector('.login-form')
     .addEventListener('submit', loginFormHandler);
   

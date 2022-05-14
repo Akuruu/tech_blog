@@ -2,4 +2,22 @@
 <p>Post Information</p>
 {{/if}}
 
-<script src="public\javascript\new.js"></script>
+<div class="card">
+
+    <div class="card-header">
+        <h2> Create a post</h2>
+    </div>
+
+    <form class="card-body new-post-form">
+
+        <label class ="form-label" for="post-title">Title</label>
+        <input type="text" name="post-title" class="form-input"/>
+
+        <label class="form-label" for="post-description">Description</label>
+        <textarea name="post-description" class="form-input" placeholder="Please write a description"></textarea>
+
+        <button type="submit" class="btn btn-danger">Post</button>
+    </form>
+</div>
+
+<script src="/javascript/new.js"></script>
