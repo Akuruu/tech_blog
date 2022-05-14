@@ -4,7 +4,6 @@ const session = require('express-session');
 // express-handlebars
 const exphbs = require('express-handlebars');
 
-// helpers (if you are putting timestamps on posts)
 const helpers = require('./utils/helper');
 
 const app = express();
@@ -37,6 +36,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./controllers'));
 
 app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}!`);
+  console.log(`App listening on port ${PORT}`);
   sequelize.sync({ force: false });
 });
